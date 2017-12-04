@@ -1,2 +1,22 @@
 # dart_wordlists
-passphrase wordlists and parsers / utilities for loading the word lists
+
+A library for Dart developers.
+
+Created from templates made available by Stagehand under a BSD-style
+[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+
+## Usage
+
+A simple usage example:
+
+    import 'package:dart_wordlists/dart_wordlists.dart';
+
+    main() {
+      var awesome = new Awesome();
+    }
+
+## Features and bugs
+
+Please file feature requests and bugs at the [issue tracker][tracker].
+
+[tracker]: http://example.com/issues/replaceme
