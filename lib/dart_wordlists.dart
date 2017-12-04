@@ -5,4 +5,4 @@ library dart_wordlists;
 
 export 'src/dart_wordlists_base.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+export 'src/wordlist_parser.dart';

@@ -8,8 +8,8 @@ authors:
 environment:
   sdk: '>=1.20.1 <2.0.0'
 
-#dependencies:
-#  path: ^1.4.1
+dependencies:
+  resource: "^2.1.2"
 
 dev_dependencies:
   test: ^0.12.0
