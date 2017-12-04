@@ -4,5 +4,3 @@
 library dart_wordlists;
 
 export 'src/dart_wordlists_base.dart';
-
-export 'src/wordlist_parser.dart';

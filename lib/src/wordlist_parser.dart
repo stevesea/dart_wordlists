@@ -4,12 +4,12 @@ import 'package:resource/resource.dart';
 import 'dart:convert';
 
 abstract class AbstractWordlistLoader {
-
   Future<List<String>> load();
 }
 
 // to load word lists which are have 1 word per line, and all lines belong in the data set
 class SimpleWordlistLoader extends AbstractWordlistLoader {
+
   final String uri;
   final Encoding encoding;
 
