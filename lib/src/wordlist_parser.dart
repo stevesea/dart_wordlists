@@ -42,6 +42,7 @@ class DicewareWordlistLoader extends AbstractWordlistLoader {
     var trimmed = string.split("\n").map((s) => s.trim()).where((s) => s.isNotEmpty);
     var trimmedAndSplit = trimmed.map((s) => s.split("\t"));
 
+    // note: Map.fromIterable uses a LinkedHashMap so order of insertion is order of iteration
     return new Map.fromIterable(trimmedAndSplit,
         key: (words) => words[0],
         value: (words) => words[1]);

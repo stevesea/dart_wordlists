@@ -7,7 +7,7 @@ import 'package:args/args.dart';
 main(List<String> arguments) async {
   var argParser = new ArgParser()
     ..addOption("num", abbr: "n",
-        help: "items to pick from rest of command line",
+        help: "words to pick from wordlist",
         defaultsTo: "6");
 
   var results = argParser.parse(arguments);
@@ -33,7 +33,7 @@ sample(int sampleSize) async {
     var words = await loader.findLoader(wl).load();
     print(words);
 
-    print ("sample: ${sampler.pickN(words, sampleSize)}");
+    print ("sample: ${sampler.pickN(words, sampleSize, unique: false)}");
     print ("\n");
   }
 }
