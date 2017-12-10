@@ -38,7 +38,7 @@ class WordlistMetadata {
 
   @override
   String toString() {
-    return 'WordlistMetadata{uiName: $uiName, tags: $tags, locale: $locale, numWords: $numWords, info: $info, entropyPerWord: ${entropyPerWord()}';
+    return 'WordlistMetadata{uiName: $uiName, tags: $tags, locale: $locale, numWords: $numWords, info: $info, entropyPerWord: ${entropyPerWord()}}';
   }
 
   // If a passphrase is selected from a universe of N possibilities, where each possibility is equally likely to be chosen, the entropy is log2(N)
