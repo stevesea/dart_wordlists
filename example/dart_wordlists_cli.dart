@@ -24,7 +24,8 @@ sample(int sampleSize) async {
     Wordlist.bip39_en,
     Wordlist.bip39_zh_CW,
     Wordlist.diceware_beale_en,
-    Wordlist.eff_large_en
+    Wordlist.eff_large_en,
+    Wordlist.eff_short_v1_en
   ];
   for (var wl in wordlists) {
     var meta = loader.findMetadata(wl);

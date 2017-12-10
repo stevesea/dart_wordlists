@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:dart_wordlists/src/wordlist_parser.dart';
 
@@ -37,8 +38,12 @@ class WordlistMetadata {
 
   @override
   String toString() {
-    return 'WordlistMetadata{uiName: $uiName, tags: $tags, locale: $locale, numWords: $numWords, info: $info}';
+    return 'WordlistMetadata{uiName: $uiName, tags: $tags, locale: $locale, numWords: $numWords, info: $info, entropyPerWord: ${entropyPerWord()}';
   }
+
+  // If a passphrase is selected from a universe of N possibilities, where each possibility is equally likely to be chosen, the entropy is log2(N)
+  // If the passphrase is made out of M symbols, each chosen at random from a universe of N possibilities, each equally likely, the entropy is M*log2(N)
+  double entropyPerWord() => log(numWords)/log(2);
 }
 
 class WordlistLoader {
