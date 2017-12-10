@@ -31,7 +31,7 @@ class DicewareWordlistLoader extends AbstractWordlistLoader {
   final String uri;
   final Encoding encoding;
 
-  DicewareWordlistLoader({this.uri, this.encoding});
+  DicewareWordlistLoader({this.uri, this.encoding = UTF8});
 
   Future<Map<String, String>> loadAsMap() async {
     // read from resource as UTF8

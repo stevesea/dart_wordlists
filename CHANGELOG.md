@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- add unit test for entropy
+
 ## 0.1.0 
 
 - change diceware-style parser to return Map<String,String>

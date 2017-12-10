@@ -14,6 +14,9 @@ void main() {
       var words = await loader.load();
 
       expect(words.length, equals(2048));
+
+      var meta = wlLoader.findMetadata(Wordlist.bip39_en);
+      expect(meta.entropyPerWord(), closeTo(11, 0.001));
     });
   });
 }
