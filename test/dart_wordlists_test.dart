@@ -1,5 +1,5 @@
 import 'package:dart_wordlists/dart_wordlists.dart';
-import 'package:dart_wordlists/src/pgp_wordlist.dart';
+import 'package:dart_wordlists/src/pgp_mnemonic.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -18,7 +18,7 @@ void main() {
   });
 
   group('test pgp', () {
-    var pgpWords = new PgpWords();
+    var pgpWords = new PgpMnemonic();
 
     setUp(() async {
       await pgpWords.init();
@@ -37,7 +37,7 @@ void main() {
     });
 
     test('trim all', () {
-      expect(PgpWords.trimAll('the test works\noh\tboy'), 'thetestworksohboy');
+      expect(trimAll('the test works\noh\tboy'), 'thetestworksohboy');
     });
 
     test('from hex - with lowercase', () {
@@ -74,6 +74,9 @@ void main() {
 
     test('to hex', () {
       expect(pgpWords.fromPhraseToHex(['Pluto', 'vagabond']), '94f2');
+    });
+    test('to hex - lowercase', () {
+      expect(pgpWords.fromPhraseToHex(['pluto', 'vagabond']), '94f2');
     });
 
     test('to hex -- bad position', () {

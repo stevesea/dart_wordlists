@@ -1,72 +1,83 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:core';
 import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:dart_wordlists/src/dart_wordlists_base.dart';
 import 'package:memoize/memoize.dart';
-import 'package:quiver/collection.dart';
 import 'package:quiver/strings.dart';
 
 var memoizedLoader = imemo2((WordlistLoader loader, Wordlist wl) => loader.findLoader(wl).load());
 
+/// trim all whitespace from the string -- both inside and outside of words
+String trimAll(String strWithWhitespace) {
+  return strWithWhitespace.runes.where((rune) => !isWhitespace(rune)).map((rune) => String.fromCharCode(rune)).join();
+}
+
 /// translate from binary data to a human-readable collection of words, and vice versa
 ///    https://en.wikipedia.org/wiki/PGP_word_list
-class PgpWords {
+class PgpMnemonic {
   WordlistLoader loader;
-  BiMap<int, String> evenMap;
-  BiMap<int, String> oddMap;
+  // quiver's bimap doesn't let us supply our own equals method, so we can't use ignore-case
+  Map<int, String> evenIntToWord;
+  Map<String, int> evenWordToInt;
+  Map<int, String> oddIntToWord;
+  Map<String, int> oddWordToInt;
 
-  PgpWords({WordlistLoader wlLoader}) : loader = wlLoader != null ? wlLoader : new WordlistLoader();
+  PgpMnemonic({WordlistLoader wlLoader}) : loader = wlLoader != null ? wlLoader : new WordlistLoader();
 
   Future<void> init() async {
-    evenMap = HashBiMap();
-    oddMap = HashBiMap();
+    evenIntToWord = HashMap();
+    evenWordToInt = HashMap(equals: (k1, k2) => equalsIgnoreCase(k1, k2), hashCode: (k) => k.toLowerCase().hashCode);
+    oddIntToWord = HashMap();
+    oddWordToInt = HashMap(equals: (k1, k2) => equalsIgnoreCase(k1, k2), hashCode: (k) => k.toLowerCase().hashCode);
 
     List<String> even = await memoizedLoader(loader, Wordlist.pgp_even);
     List<String> odd = await memoizedLoader(loader, Wordlist.pgp_odd);
 
-    evenMap.addAll(even.asMap());
-    oddMap.addAll(odd.asMap());
+    if (even.length != 256) throw new ArgumentError("pgp even word list is not 256 words long!");
+    if (odd.length != 256) throw new ArgumentError("pgp odd word list is not 256 words long!");
+
+    even.asMap().forEach((i, s) {
+      evenIntToWord[i] = s;
+      evenWordToInt[s] = i;
+    });
+
+    odd.asMap().forEach((i, s) {
+      oddIntToWord[i] = s;
+      oddWordToInt[s] = i;
+    });
   }
 
   String toEvenWord(int b) {
-    assert(evenMap != null);
+    assert(evenIntToWord != null);
     RangeError.checkValueInInterval(b, 0, 256);
-    return evenMap[b];
+    return evenIntToWord[b];
   }
 
   String toOddWord(int b) {
-    assert(oddMap != null);
+    assert(oddIntToWord != null);
     RangeError.checkValueInInterval(b, 0, 256);
-    return oddMap[b];
+    return oddIntToWord[b];
   }
 
   /// returns null if word not in list
   int fromEvenWord(String s) {
-    assert(evenMap != null);
-    return evenMap.inverse[s];
+    assert(evenWordToInt != null);
+    assert(s != null);
+    return evenWordToInt[s];
   }
 
   /// returns null if word not in list
   int fromOddWord(String s) {
-    assert(oddMap != null);
-    return oddMap.inverse[s];
+    assert(oddWordToInt != null);
+    assert(s != null);
+    return oddWordToInt[s];
   }
 
-  /// given a pgp-wordlist phrase, output the byte equivalent
+  /// given a pgp-wordlist phrase, output the equivalent as a byte array
   Uint8List fromPhrase(List<String> phrase) {
-    /*
-    List<int> ret = [];
-    for (var i = 0; i < phrase.length; i++) {
-      int val = i.isEven ? fromEvenWord(phrase[i]) : fromOddWord(phrase[i]);
-      if (val == null) {
-        throw new ArgumentError.value(phrase[i], 'Invalid word "${phrase[i]}" at position $i');
-      }
-      ret.add(val);
-    }
-    return Uint8List.fromList(ret);
-    */
     return Uint8List.fromList(phrase
         .asMap()
         .map((i, word) {
@@ -103,14 +114,5 @@ class PgpWords {
   /// given a string of hex characters, return the pgp-wordlist phrase
   List<String> toPhraseFromHex(String hexStr) {
     return toPhrase(hex.decode(trimAll(hexStr)));
-  }
-
-  static String normalizeHexStr(String weirdHex) {
-    return trimAll(weirdHex).toUpperCase();
-  }
-
-  /// trim all whitespace from the string -- both inside and outside of words
-  static String trimAll(String strWithWhitespace) {
-    return strWithWhitespace.runes.where((rune) => !isWhitespace(rune)).map((rune) => String.fromCharCode(rune)).join();
   }
 }

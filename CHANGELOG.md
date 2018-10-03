@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- add pgp even/odd wordlists (see https://en.wikipedia.org/wiki/PGP_word_list)
+- add PgpMnemonic class to create phrase from a bytearray and vice versa 
+
 ## 0.2.0 
 
 - upgrade to dart 2

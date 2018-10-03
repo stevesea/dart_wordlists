@@ -5,8 +5,8 @@ main(List<String> arguments) async {
   await pgpWords.init();
 
   if (arguments.length == 0) {
-    print("You must supply a hex string (whitespace separation a-ok!)");
+    print("You must supply some words");
   } else {
-    print(pgpWords.toPhraseFromHex(arguments.join(' ')).join(' '));
+    print(pgpWords.fromPhraseToHex(arguments));
   }
 }

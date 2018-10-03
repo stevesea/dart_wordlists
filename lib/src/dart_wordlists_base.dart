@@ -90,9 +90,17 @@ class WordlistLoader {
         numWords: 1296,
         info: "each word has unique 3-char prefix, all words at least edit distance 3 apart"),
     Wordlist.pgp_even: new WordlistMetadata(
-        uiName: "PGP Word list (even)", tags: ["PGP"], locale: "en", numWords: 256, info: "the 'even' pgp wordlist."),
+        uiName: "PGP Word list (even)",
+        tags: ["PGP"],
+        locale: "en",
+        numWords: 256,
+        info: "the 'even' pgp wordlist. two syllables."),
     Wordlist.pgp_odd: new WordlistMetadata(
-        uiName: "PGP Word list (odd)", tags: ["PGP"], locale: "en", numWords: 256, info: "the 'odd' pgp wordlist."),
+        uiName: "PGP Word list (odd)",
+        tags: ["PGP"],
+        locale: "en",
+        numWords: 256,
+        info: "the 'odd' pgp wordlist. three syllables."),
   };
 
   static Map<Wordlist, AbstractWordlistLoader> wordlistToLoader = {
