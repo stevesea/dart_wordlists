@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.1
+## 0.2.2
 
 - add pgp even/odd wordlists (see https://en.wikipedia.org/wiki/PGP_word_list)
 - add PgpMnemonic class to create phrase from a bytearray and vice versa 

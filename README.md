@@ -7,9 +7,35 @@ Created from templates made available by Stagehand under a BSD-style
 
 ## Usage
 
+### generate pgp mnemonic from byte array
+
+```dart
+import 'package:dart_wordlists/dart_wordlists.dart';
+
+main(List<String> arguments) async {
+  PgpMnemonic pgpWords = new PgpMnemonic();
+  await pgpWords.init();
+
+  if (arguments.length == 0) {
+    print("You must supply a hex string (whitespace separation a-ok!)");
+  } else {
+    print(pgpWords.toPhraseFromHex(arguments.join(' ')).join(' '));
+  }
+}
+```
+running the example:
+```bash
+$ pub run example/pgp_words.dart a2b4 ff5a 21a9
+rebirth politeness Zulu existence blackjack passenger
+
+```
+
+
+### word list selection w/ collection sampler
+
 A simple usage example:
 
-```$dart
+```dart
     import 'package:dart_wordlists/dart_wordlists.dart';
     import 'package:dart_collection_sampler/dart_collection_sampler.dart';
     
