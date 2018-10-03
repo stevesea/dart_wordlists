@@ -1,7 +1,7 @@
-
 import 'dart:async';
-import 'package:resource/resource.dart';
 import 'dart:convert';
+
+import 'package:resource/resource.dart';
 
 abstract class AbstractWordlistLoader {
   Future<List<String>> load();
@@ -9,7 +9,6 @@ abstract class AbstractWordlistLoader {
 
 // to load word lists which are have 1 word per line, and all lines belong in the data set
 class SimpleWordlistLoader extends AbstractWordlistLoader {
-
   final String uri;
   final Encoding encoding;
 
@@ -27,11 +26,10 @@ class SimpleWordlistLoader extends AbstractWordlistLoader {
 
 // diceware-style lists have a integer representing dice rolls & the word on each line
 class DicewareWordlistLoader extends AbstractWordlistLoader {
-
   final String uri;
   final Encoding encoding;
 
-  DicewareWordlistLoader({this.uri, this.encoding = UTF8});
+  DicewareWordlistLoader({this.uri, this.encoding = utf8});
 
   Future<Map<String, String>> loadAsMap() async {
     // read from resource as UTF8
@@ -43,9 +41,7 @@ class DicewareWordlistLoader extends AbstractWordlistLoader {
     var trimmedAndSplit = trimmed.map((s) => s.split("\t"));
 
     // note: Map.fromIterable uses a LinkedHashMap so order of insertion is order of iteration
-    return new Map.fromIterable(trimmedAndSplit,
-        key: (words) => words[0],
-        value: (words) => words[1]);
+    return new Map.fromIterable(trimmedAndSplit, key: (words) => words[0], value: (words) => words[1]);
   }
 
   Future<List<String>> load() async {

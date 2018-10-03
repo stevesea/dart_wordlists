@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 
+
+- upgrade to dart 2
+
 ## 0.1.1
 
 - add unit test for entropy
