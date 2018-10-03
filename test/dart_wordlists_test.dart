@@ -44,7 +44,7 @@ void main() {
       expect(pgpWords.toPhraseFromHex('e5'), ['topmost']);
     });
 
-    test('from hex', () async {
+    test('from hex', () {
       expect(pgpWords.toPhraseFromHex('''
         E582 94F2 E9A2 2748 6E8B
         061B 31CC 528F D7FA 3F19 
@@ -70,6 +70,15 @@ void main() {
         'cowbell',
         'bottomless'
       ]);
+    });
+
+    test('to hex', () {
+      expect(pgpWords.fromPhraseToHex(['Pluto', 'vagabond']), '94f2');
+    });
+
+    test('to hex -- bad position', () {
+      // NOTE: have to use lambda if using throwsarg
+      expect(() => pgpWords.fromPhraseToHex(['Pluto', 'vagabond', 'bottomless']), throwsArgumentError);
     });
   });
 }

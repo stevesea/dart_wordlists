@@ -42,42 +42,62 @@ class PgpWords {
     return oddMap[b];
   }
 
+  /// returns null if word not in list
   int fromEvenWord(String s) {
     assert(evenMap != null);
-    if (!evenMap.inverse.containsKey(s)) {
-      throw new ArgumentError.value(s);
-    }
     return evenMap.inverse[s];
   }
 
+  /// returns null if word not in list
   int fromOddWord(String s) {
     assert(oddMap != null);
-    if (!oddMap.inverse.containsKey(s)) {
-      throw new ArgumentError.value(s);
-    }
     return oddMap.inverse[s];
   }
 
   /// given a pgp-wordlist phrase, output the byte equivalent
   Uint8List fromPhrase(List<String> phrase) {
-    return List.of([0]);
+    /*
+    List<int> ret = [];
+    for (var i = 0; i < phrase.length; i++) {
+      int val = i.isEven ? fromEvenWord(phrase[i]) : fromOddWord(phrase[i]);
+      if (val == null) {
+        throw new ArgumentError.value(phrase[i], 'Invalid word "${phrase[i]}" at position $i');
+      }
+      ret.add(val);
+    }
+    return Uint8List.fromList(ret);
+    */
+    return Uint8List.fromList(phrase
+        .asMap()
+        .map((i, word) {
+          int val = i.isEven ? fromEvenWord(word) : fromOddWord(word);
+          if (val == null) {
+            int valOther = !i.isEven ? fromEvenWord(word) : fromOddWord(word);
+            if (valOther == null) {
+              // word isn't in either of the lists.
+              throw ArgumentError('Unknown word "${word}" at position $i');
+            } else {
+              // word is in other list, which means the user transposed
+              throw ArgumentError('Misplaced word "${word}" at position $i');
+            }
+          }
+          return MapEntry(i, val);
+        })
+        .values
+        .toList());
   }
 
   String fromPhraseToHex(List<String> phrase) {
-    return "0xdeadbeef";
+    return hex.encode(fromPhrase(phrase));
   }
 
   /// given a byte array, return the pgp-wordlist phrase
   List<String> toPhrase(Uint8List bytes) {
-    List<String> ret = [];
-    for (var i = 0; i < bytes.length; i++) {
-      if (i.isEven) {
-        ret.add(toEvenWord(bytes[i]));
-      } else {
-        ret.add(toOddWord(bytes[i]));
-      }
-    }
-    return ret;
+    return bytes
+        .asMap()
+        .map((i, b) => MapEntry(i, i.isEven ? toEvenWord(bytes[i]) : toOddWord(bytes[i])))
+        .values
+        .toList();
   }
 
   /// given a string of hex characters, return the pgp-wordlist phrase
