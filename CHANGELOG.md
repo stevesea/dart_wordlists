@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.4
+- fix package desc
+
 ## 0.2.3
 - update deps
 

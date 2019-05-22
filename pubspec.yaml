@@ -1,6 +1,6 @@
 name: dart_wordlists
-description: passphrase word lists and parsing utils
-version: 0.2.3
+description: Wordlist data for passphrases, and for PGP mnemonic parse/unparse
+version: 0.2.4
 homepage: https://github.com/stevesea/dart_wordlists
 authors:
   - steve christensen <adventuresmith.rpg@gmail.com>
