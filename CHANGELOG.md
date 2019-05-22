@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.3
+- update deps
+
 ## 0.2.2
 
 - add pgp even/odd wordlists (see https://en.wikipedia.org/wiki/PGP_word_list)
