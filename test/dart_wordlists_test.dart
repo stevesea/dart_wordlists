@@ -81,7 +81,9 @@ void main() {
 
     test('to hex -- bad position', () {
       // NOTE: have to use lambda if using throwsarg
-      expect(() => pgpWords.fromPhraseToHex(['Pluto', 'vagabond', 'bottomless']), throwsArgumentError);
+      expect(
+          () => pgpWords.fromPhraseToHex(['Pluto', 'vagabond', 'bottomless']),
+          throwsArgumentError);
     });
   });
 }
