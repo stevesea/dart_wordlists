@@ -25,10 +25,12 @@ main(List<String> arguments) async {
 }
 ```
 running the example:
-```bash
-$ pub run example/pgp_words.dart a2b4 ff5a 21a9
+```console
+foo@bar$ pub run example/pgp_words.dart a2b4 ff5a 21a9
 rebirth politeness Zulu existence blackjack passenger
 
+foo@bar$ pub run example/pgp_unwords.dart rebirth politeness Zulu existence blackjack passenger
+a2b4ff5a21a9
 ```
 
 
