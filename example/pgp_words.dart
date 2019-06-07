@@ -1,7 +1,7 @@
 import 'package:dart_wordlists/dart_wordlists.dart';
 
-main(List<String> arguments) async {
-  PgpMnemonic pgpWords = new PgpMnemonic();
+void main(List<String> arguments) async {
+  var pgpWords = PgpMnemonic();
   await pgpWords.init();
 
   if (arguments.length == 0) {

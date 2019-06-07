@@ -1,5 +1,5 @@
-///
-/// More dartdocs go here.
+/// wordlists as assets
+/// 
 library dart_wordlists;
 
 export 'src/dart_wordlists_base.dart';

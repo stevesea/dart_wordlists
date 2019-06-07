@@ -2,18 +2,20 @@ import 'package:args/args.dart';
 import 'package:dart_collection_sampler/dart_collection_sampler.dart';
 import 'package:dart_wordlists/dart_wordlists.dart';
 
-main(List<String> arguments) async {
-  var argParser = new ArgParser()..addOption("num", abbr: "n", help: "words to pick from wordlist", defaultsTo: "6");
+void main(List<String> arguments) async {
+  var argParser = ArgParser()
+    ..addOption("num",
+        abbr: "n", help: "words to pick from wordlist", defaultsTo: "6");
 
   var results = argParser.parse(arguments);
 
   sample(int.parse(results["num"]));
 }
 
-sample(int sampleSize) async {
-  var loader = new WordlistLoader();
+void sample(int sampleSize) async {
+  var loader = WordlistLoader();
 
-  var sampler = new CollectionSampler();
+  var sampler = CollectionSampler();
 
   var wordlists = [
     Wordlist.bip39_zh_CW,

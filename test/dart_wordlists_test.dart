@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('test loader', () {
-    var wlLoader = new WordlistLoader();
+    var wlLoader = WordlistLoader();
 
     test('First Test', () async {
       var loader = wlLoader.findLoader(Wordlist.bip39_en);
@@ -18,7 +18,7 @@ void main() {
   });
 
   group('test pgp', () {
-    var pgpWords = new PgpMnemonic();
+    var pgpWords = PgpMnemonic();
 
     setUp(() async {
       await pgpWords.init();
@@ -47,7 +47,7 @@ void main() {
     test('from hex', () {
       expect(pgpWords.toPhraseFromHex('''
         E582 94F2 E9A2 2748 6E8B
-        061B 31CC 528F D7FA 3F19 
+        061B 31CC 528F D7FA 3F19
         '''), [
         'topmost',
         'Istanbul',

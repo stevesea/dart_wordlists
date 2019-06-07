@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.0
+- start fixing analysis issues
+
 ## 0.2.4
 - fix package desc
 
@@ -9,9 +12,9 @@
 ## 0.2.2
 
 - add pgp even/odd wordlists (see https://en.wikipedia.org/wiki/PGP_word_list)
-- add PgpMnemonic class to create phrase from a bytearray and vice versa 
+- add PgpMnemonic class to create phrase from a bytearray and vice versa
 
-## 0.2.0 
+## 0.2.0
 
 - upgrade to dart 2
 
@@ -19,12 +22,12 @@
 
 - add unit test for entropy
 
-## 0.1.0 
+## 0.1.0
 
 - change diceware-style parser to return Map<String,String>
-- add method to calculate entropy per word from wordlist 
+- add method to calculate entropy per word from wordlist
 
-## 0.0.2 
+## 0.0.2
 
 - in CLI example, don't select unique words
 
