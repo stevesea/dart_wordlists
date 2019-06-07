@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.1
+- make code more idiomatic
+
 ## 1.0.0
 - start fixing analysis issues
 
