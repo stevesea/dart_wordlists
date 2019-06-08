@@ -23,7 +23,7 @@ void sample(int sampleSize) async {
     Wordlist.eff_large_en,
     Wordlist.eff_short_v1_en,
   ];
-  for (var wl in wordlists) {
+  for (final wl in wordlists) {
     var meta = loader.findMetadata(wl);
     print(loader.findMetadata(wl));
 
