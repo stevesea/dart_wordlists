@@ -1,5 +1,6 @@
 # dart_wordlists
 [![Pub Package](https://img.shields.io/pub/v/dart_wordlists.svg)](https://pub.dartlang.org/packages/dart_wordlists)
+[![CircleCI](https://circleci.com/gh/stevesea/dart_wordlists.svg?style=svg)](https://circleci.com/gh/stevesea/dart_wordlists)
 
 A library for passphrase word lists. Inspired by Diceware and others
 
