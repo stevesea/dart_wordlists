@@ -25,12 +25,12 @@ jobs:
       - checkout
       - restore_cache:
           key: v2-pubcache-{{ checksum "pubspec.yaml" }}
-      - run:
-          name: Lint
-          command: bash -c '[[ "$(dartfmt -n . | wc -l)" -eq "0" ]]'
-      - run:
-          name: Dartanalyze
-          command: dartanalyzer  --fatal-warnings . # --fatal-infos
+#      - run:
+#          name: Lint
+#          command: bash -c '[[ "$(dartfmt -n . | wc -l)" -eq "0" ]]'
+#      - run:
+#          name: Dartanalyze
+#          command: dartanalyzer  --fatal-warnings . # --fatal-infos
       - run:
           name: Test
           command: pub run test
