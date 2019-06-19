@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.2 
+- update to latest readme/deps
+
 ## 1.0.1
 - make code more idiomatic
 
