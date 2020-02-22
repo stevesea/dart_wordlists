@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.1
+- update dart dice parser (downgrade petitparser)
+
 ## 2.0.0
 - update to 2.7 sdk
 
