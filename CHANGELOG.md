@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.0.2 
+## 2.0.0
+- update to 2.7 sdk
+
+## 1.0.2
 - update to latest readme/deps
 
 ## 1.0.1
