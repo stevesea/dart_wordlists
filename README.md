@@ -1,11 +1,8 @@
 # dart_wordlists
 [![Pub Package](https://img.shields.io/pub/v/dart_wordlists.svg)](https://pub.dartlang.org/packages/dart_wordlists)
-[![CircleCI](https://circleci.com/gh/stevesea/dart_wordlists.svg?style=svg)](https://circleci.com/gh/stevesea/dart_wordlists)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 A library for passphrase word lists. Inspired by Diceware and others
-
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
 
 ## Usage
 
