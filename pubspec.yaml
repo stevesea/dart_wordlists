@@ -1,12 +1,11 @@
 name: dart_wordlists
 description: Wordlist data for passphrases, and for PGP mnemonic parse/unparse
-version: 2.0.1
+version: 3.0.0
 homepage: https://github.com/stevesea/dart_wordlists
-authors:
-  - steve christensen <adventuresmith.rpg@gmail.com>
+repository: https://github.com/stevesea/dart_wordlists
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   resource: ">=2.1.6 <3.0.0"

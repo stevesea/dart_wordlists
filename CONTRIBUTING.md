@@ -1,4 +1,4 @@
-# Contributing to dart_collection_sampler
+# Contributing to dart_wordlists
 
 ## Community and Behavioral Expectations
 
